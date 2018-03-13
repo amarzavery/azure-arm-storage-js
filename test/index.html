@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>My Todos</title>
+    <script type="text/javascript" src="../node_modules/ms-rest-js/msRestBundle.js"></script>
+    <script type="text/javascript" src="../node_modules/ms-rest-azure-js/msRestAzureBundle.js"></script>
+    <script type="text/javascript" src="../storageManagementClientBundle.js"></script>
+    <script type="text/javascript">
+      document.write('hello world');
+      const subscriptionId = "00977cdb-163f-435f-9c32-39ec8ae61f4d";
+      const token = "<access-token>";
+      const creds = new msRest.TokenCredentials(token);
+      const client = new storageManagementClient.StorageManagementClient(creds, subscriptionId);
+      client.operations.list().then((result) => {
+        console.log("The result is:");
+        console.log(result);
+        document.writeln(JSON.stringify(result));
+      }).catch((err) => {
+        console.log('An error ocurred:');
+        console.dir(err, { depth: null, colors: true});
+        document.writeln(JSON.stringify(err));
+      });
+    </script>
+  </head>
+  <body>
+  </body>
+</html>
